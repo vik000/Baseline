@@ -1,0 +1,23 @@
+{
+  "name": "Baselion",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Victor Manuel García Sanabria <vik000@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/vik000/Baselion",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.7"
+  },
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
+}

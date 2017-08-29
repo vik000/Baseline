@@ -5,6 +5,7 @@ var wiredep = require('wiredep').stream;
 var mainBowerFiles = require('main-bower-files');
 var filter = require('gulp-filter');
 var concat = require('gulp-concat');
+var csso = require('gulp-csso');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -33,6 +34,7 @@ gulp.task('styles', function(){
     .pipe(inject(injectGlobalFiles, injectGlobalOptions))
     .pipe(inject(injectAppFiles, injectAppOptions))
     .pipe(sass())
+    .pipe(csso())
     .pipe(gulp.dest('dist/styles'));
 });
 
@@ -40,6 +42,7 @@ gulp.task('vendors', function(){
   return gulp.src(mainBowerFiles())
     .pipe(filter('*.css'))
     .pipe(concat('vendors.css'))
+    .pipe(csso())
     .pipe(gulp.dest('dist/styles'));
 });
 

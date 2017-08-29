@@ -33,7 +33,7 @@ gulp.task('styles', function(){
     .pipe(gulp.dest('dist/styles'));
 });
 
-gulp.task('html', ['styles'], function(){
+gulp.task('default', ['styles'], function(){
   var injectFiles = gulp.src(['dist/styles/main.css']);
 
   var injectOptions = {

@@ -2,6 +2,11 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
+var del = require('del');
+
+gulp.task('clean', function(cb){
+  del(['dist'], cb);
+});
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -33,7 +38,7 @@ gulp.task('styles', function(){
     .pipe(gulp.dest('dist/styles'));
 });
 
-gulp.task('html', ['styles'], function(){
+gulp.task('default', ['clean', 'styles'], function(){
   var injectFiles = gulp.src(['dist/styles/main.css']);
 
   var injectOptions = {

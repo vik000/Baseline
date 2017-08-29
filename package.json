@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/vik000/Baselion#readme",
   "devDependencies": {
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-inject": "^4.2.0",
     "gulp-sass": "^3.1.0",

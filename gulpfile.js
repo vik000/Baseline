@@ -2,6 +2,9 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var inject = require('gulp-inject');
 var wiredep = require('wiredep').stream;
+var mainBowerFiles = require('main-bower-files');
+var filter = require('gulp-filter');
+var concat = require('gulp-concat');
 
 gulp.task('styles', function(){
   var injectAppFiles = gulp.src('src/styles/*.scss', {read: false});
@@ -33,8 +36,15 @@ gulp.task('styles', function(){
     .pipe(gulp.dest('dist/styles'));
 });
 
-gulp.task('default', ['styles'], function(){
-  var injectFiles = gulp.src(['dist/styles/main.css']);
+gulp.task('vendors', function(){
+  return gulp.src(mainBowerFiles())
+    .pipe(filter('*.css'))
+    .pipe(concat('vendors.css'))
+    .pipe(gulp.dest('dist/styles'));
+});
+
+gulp.task('default', ['styles','vendors'], function(){
+  var injectFiles = gulp.src(['dist/styles/main.css','dist/styles/vendors.css']);
 
   var injectOptions = {
     addRootSlash: false,
